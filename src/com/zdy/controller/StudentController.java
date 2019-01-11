@@ -21,12 +21,12 @@ public class StudentController {
 	//检查登录
 	@GetMapping(value="/login")
 	public String  login(){
-		
+		System.out.println("直接login页面！！！");
 		return "login";
 	}
 	@PostMapping(value="/login")
 	public String reLogin(){
-		
+		System.out.println("post方法的Login");
 		
 		return "login";
 	}

@@ -1,0 +1,82 @@
+注意：需要在spring-mvc.xml配置拦截器才能生效
+
+
+拦截器类似于过滤器
+
+拦截器只针对于handler方法
+	
+springmvc实现拦截器的方式:
+	1.实现HandlerIntercpeter 接口
+	2.继承HandlerIntercpeterAdapter 抽象类
+	
+	
+应用:
+	1.实现HandlerIntercpeter接口
+	2.完成接口中定义的方法
+	3.将自定义拦截器配置在springmvc配置文件中
+		并且之定义拦截的请求
+		
+		
+		
+HandlerIntercpeter接口中定义了如下三个方法:
+	boolean preHandle
+		在目标handler执行之前执行
+		且当返回值为true的情况下才去执行目标handler, 否则不执行
+	void postHanlde
+		当preHandle返回true
+		且目标方法执行之后执行
+	void afterCompletion
+		在视图渲染之后执行
+		
+		
+当配置一个拦截器, 且preHandle方法true时, 执行顺序
+	====preHandle
+	执行handler方法
+	====postHandle
+	视图渲染
+	====afterCompletion
+	
+	
+	
+多个拦截器, 且preHandle方法都返回true的执行时机
+1====preHandle
+2====preHandle
+执行handler方法
+2====postHandle
+1====postHandle
+视图渲染
+2====afterCompletion
+1====afterCompletion
+	
+	
+多个拦截器, 且preHandle1方法都返回true, preHandle2返回false
+1====preHandle
+2====preHandle
+	--执行handler方法
+	--2====postHandle
+	--1====postHandle
+	--视图渲染
+	--2====afterCompletion
+1====afterCompletion	
+
+
+
+
+
+通过拦截器完成简单的权限控制:
+	页面:
+		1.登录页面
+		2.首页(菜单)
+			菜单对应的测试页面
+			
+	要求:
+		如果用户没有登录, 只能访问登录页面
+		只有登录了才能访问首页或者其他的资源页面
+		
+
+
+
+
+	
+	
+		
