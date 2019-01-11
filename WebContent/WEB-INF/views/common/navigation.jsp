@@ -14,20 +14,20 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#">管理系统</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link</a></li>
+					<li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+					<li><a href="#">关于我们</a></li>
 					
 					<!--下拉  -->
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						aria-expanded="false">更多 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
@@ -40,20 +40,25 @@
 				</ul>
 				<form class="navbar-form navbar-left">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input id="serach" type="text" class="form-control" placeholder="请输入...">
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="button"class="btn btn-primary" id="btn_baidu">百度一下</button>
 				</form>
+
+
+
 				<ul class="nav navbar-nav navbar-right">
 
 					<li><a href="#"><span class="glyphicon glyphicon-user"
-							aria-hidden="true"></span>&nbsp;${usernameOrMail }</a></li>
+							aria-hidden="true"></span>&nbsp;欢迎:&nbsp;${sNameOrEmail }&nbsp;进入选课系统</a></li>
 
-					<li style="color: green"><a
-						href="${pageContext.request.contextPath}/auth/logout"><button
+					<li style="color: green">
+						<a href="${pageContext.request.contextPath}/auth/logout"><button
 								type="button" class="btn btn-danger btn-xs">
 								<span class="glyphicon glyphicon-sort" aria-hidden="true"></span>&nbsp;切换账号
-							</button></a></li>
+							</button>
+						</a>
+					</li>
 
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -73,3 +78,12 @@
 		<!-- /.container-fluid -->
 	</nav>
 </div>
+<script type="text/javascript">
+	//搜索
+	$(function(){
+		$("#btn_baidu").on("click",function(){
+			var sear = $("#serach").val();
+			window.location="https://www.baidu.com/s?wd="+sear;
+		})
+	})
+</script>

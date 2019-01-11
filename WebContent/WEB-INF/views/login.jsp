@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet"  href="${pageContext.request.contextPath}/login/css/style.css" />
-    <link rel="stylesheet"  href="${pageContext.request.contextPath}/login/css/body.css"/>
+
+    <link rel="stylesheet"  href="${pageContext.request.contextPath}/logins/css/style.css" />
+    <link rel="stylesheet"  href="${pageContext.request.contextPath}/logins/css/body.css"/>
+    
+    
 <!-- 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
@@ -23,10 +26,10 @@
 		
 		
 			<div>
-				<input type="text" placeholder="账号或者关联相关邮箱账号" required="true"  name="usernameOrMail" />
+				<input type="text" placeholder="账号或者关联相关邮箱账号" required="true"  name="sNameOrEmail" />
 			</div>
 			<div>
-				<input type="password" placeholder="密码" required="true" name="password" />
+				<input type="password" placeholder="密码" required="true" name="sPassword" />
 			</div>
 			<div class="">
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
@@ -53,7 +56,7 @@
 		var box = document.getElementById("error_tips");
 		box.style.visibility = "hidden";
 	}
-	setTimeout("codefans()", 2000);//2秒，可以改动
+	setTimeout("codefans()", 3000);//2秒，可以改动
 	
 </script>
 

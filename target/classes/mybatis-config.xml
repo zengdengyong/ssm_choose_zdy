@@ -14,8 +14,6 @@
 	<typeAliases>
 		<!-- 单独为某个类取别名 -->
 		<!-- <typeAlias alias="User" type="com.cdsxt.pojo.User"/> -->
-		<package name="com.zdy.pojo" />
-		<package name="com.zdy.vo" />
 		<package name="com.zdy.model" />
 	</typeAliases>
 	

@@ -21,6 +21,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 
-	
+	<!-- 查询用户名，邮箱，和密码对应的用户是否存在 -->
+	<select id="queryStudentNameOrPassword" resultMap="base_result">
+		select * from student
+		<where>
+			<if test="sName!= null and sName!='' ">
+				s_name = #{sName}
+			</if>
+			<if test="sEmail !=null and sEmail !=''">
+				and s_email = #{sEmail}
+			</if>
+			<if test="sPassword !=null and sPassword !=''">
+				and s_password = #{sPassword}
+			</if>
+		</where>
+	</select>
+
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

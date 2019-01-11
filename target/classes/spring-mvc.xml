@@ -47,7 +47,7 @@
 		
 	</mvc:interceptors> -->
 	
-		<!-- 配置拦截器 ================== -->
+		<!-- 配置拦截器 ==================可以配置多个！！！ -->
 	<mvc:interceptors>
 		<!-- 如果没有指定, 则表示当前拦截器对项目中所有的handler方法都生效 -->
 		<!-- <bean class="com.zdy.interceptor.AuthInterceptor"> </bean> -->
@@ -62,16 +62,8 @@
 			<mvc:exclude-mapping path="/resources/**"/>	
 			<bean class="com.cdsxt.interceptor.HelloInterceptor"> </bean>
 		</mvc:interceptor>
-		<mvc:interceptor>
-			<mvc:mapping path="/user/**"/>		
-			<bean class="com.cdsxt.interceptor.FirstInterceptor"> </bean>
-		</mvc:interceptor>
 		
-		<mvc:interceptor>
-			<mvc:mapping path="/emp/**"/>		
-			<bean class="com.cdsxt.interceptor.SecondInterceptor"> </bean>
-		</mvc:interceptor> -->
-		
+		-->
 	</mvc:interceptors>
 
 </beans>
