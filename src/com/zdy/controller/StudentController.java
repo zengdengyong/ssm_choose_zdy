@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,7 +18,20 @@ import com.zdy.service.StudentService;
 public class StudentController {
 	@Resource
 	private StudentService studentService;
+	//检查登录
+	@GetMapping(value="/login")
+	public String  login(){
+		
+		return "login";
+	}
+	@PostMapping(value="/login")
+	public String reLogin(){
+		
+		
+		return "login";
+	}
 	
+	//查询所有的学生信息
 	@RequestMapping("/queryStudents")
 	@ResponseBody
 	public List<Student> queryStudents(){
