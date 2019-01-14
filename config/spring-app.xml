@@ -53,6 +53,7 @@
 		<!-- 制定sql所在文件 -->
 		<property name="mapperLocations" value="classpath:sqlMapper/*.xml"></property>
 	</bean>
+	
 	<!-- 制定mapper所在接口位置 -->
 	<mybatis-spring:scan base-package="com.zdy.dao"/>
 

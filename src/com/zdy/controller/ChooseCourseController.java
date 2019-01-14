@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.junit.Test;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,6 @@ public class ChooseCourseController {
 		return stuChooseMessages;
 		
 	}
-//	@PostMapping("/test")
 	@GetMapping("/test")
 	public String test(){
 		return "test";
