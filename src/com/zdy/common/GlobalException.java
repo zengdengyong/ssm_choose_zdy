@@ -1,10 +1,11 @@
 package com.zdy.common;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 /**
@@ -23,10 +24,24 @@ public class GlobalException implements HandlerExceptionResolver {
 	public ModelAndView resolveException(HttpServletRequest req,
 			HttpServletResponse resp, Object obj, Exception e) {
 		ModelAndView modelAndView = new ModelAndView(ERROR_PAGE);
+		e.printStackTrace();
+//		printWrite(e.toString(), resp);  //响应出去
 		modelAndView.addObject("message", message);
-		
 		return modelAndView;
 	}
+	
+	//打印异常信息
+	 public static void printWrite(String msg, HttpServletResponse response) {      
+         try {           
+             PrintWriter pw = response.getWriter();        
+             pw.write(msg);       
+             pw.flush();       
+             pw.close();      
+          } catch (Exception e) {          
+             e.printStackTrace();      
+          }   
+    }
+	
 
 }
 

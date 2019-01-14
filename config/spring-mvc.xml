@@ -22,6 +22,7 @@
 	<context:component-scan base-package="com.zdy.controller"></context:component-scan>
 	<!-- 对测试类的扫描 -->
 	<context:component-scan base-package="com.zdy.test1"></context:component-scan>
+	<context:component-scan base-package="com.zdy.util"></context:component-scan>
 	
 	
 	<!--三大组件  -->
@@ -60,8 +61,11 @@
 			<mvc:mapping path="/auth/**"/>
 		
 			<mvc:exclude-mapping path="/auth/login"/>
+			<mvc:exclude-mapping path="/auth/getVerification"/>
+			<mvc:exclude-mapping path="/auth/validateMail"/>
+			<mvc:exclude-mapping path="/auth/alterPassword"/>
 			<!-- ======= 放行图片的静态资源 -->
-			<mvc:exclude-mapping path="/logins/**"/> 
+			<!-- <mvc:exclude-mapping path="/logins/**"/>  -->
 			<bean class="com.zdy.interceptor.AuthInterceptor"></bean>
 		</mvc:interceptor>
 		

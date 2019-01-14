@@ -16,6 +16,9 @@ public interface StudentService {
 	//查询用户名或者邮箱密码对应的student
 	Student queryStudentBySnameOrEamilOrpassword(String sNameOrMail, String sPassword);
 	
+	//传入对应的邮箱查询对应的学生是否存在
+	boolean isStudent(String sNameOrMail);
 	
-	
+	//修改密码
+	void updatePassword(String userMail,String sPassword);
 }

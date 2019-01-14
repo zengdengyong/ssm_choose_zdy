@@ -15,5 +15,7 @@ public interface StudentMapper {
 			@Param("sEmail")String sEmail,
 			@Param("sPassword")String sPassword);
 	
+	//修改密码
+	void updatePassword(@Param("sEmail")String sEmail,@Param("sPassword")String sPassword);
 	
 }

@@ -37,6 +37,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
+
+
+	<!-- 修改密码 -->
+	<!-- UPDATE student SET s_password ='456' WHERE s_email = '947161829@qq.com' -->
+	<update id="updatePassword" parameterType="Student">
+		UPDATE student 
+		<set>
+			<if test="sPassword !=null and sPassword!=''">
+				s_password =#{sPassword} 
+			</if>
+		</set>
+		<where>
+			s_email = #{sEmail}
+		</where>
+	</update>
 	
 </mapper>
 
