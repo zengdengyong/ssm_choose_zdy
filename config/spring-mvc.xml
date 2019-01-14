@@ -20,7 +20,10 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan> -->
 	<context:component-scan base-package="com.zdy.controller"></context:component-scan>
-
+	<!-- 对测试类的扫描 -->
+	<context:component-scan base-package="com.zdy.test1"></context:component-scan>
+	
+	
 	<!--三大组件  -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<!--视图解析器  -->
@@ -61,8 +64,6 @@
 			<mvc:exclude-mapping path="/logins/**"/> 
 			<bean class="com.zdy.interceptor.AuthInterceptor"></bean>
 		</mvc:interceptor>
-		
-		
 		
 	</mvc:interceptors>
 
