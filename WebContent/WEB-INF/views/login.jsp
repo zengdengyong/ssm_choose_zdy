@@ -6,13 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-    <link rel="stylesheet"  href="${pageContext.request.contextPath}/logins/css/style.css" />
-    <link rel="stylesheet"  href="${pageContext.request.contextPath}/logins/css/body.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/logins/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/logins/css/body.css"/>
     
     
-<!-- 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+	<!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     -->
+    
 </head>
 <body>
 	<div class="container">

@@ -41,7 +41,7 @@
 	<!--开启注解事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!--开启注解aop		注意：如果是maven项目可能没有jar包 -->
-	<!-- <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy> -->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 
 
 	<!-- 配置mybatis -->

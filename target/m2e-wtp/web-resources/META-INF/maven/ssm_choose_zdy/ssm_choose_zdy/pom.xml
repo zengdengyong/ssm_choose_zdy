@@ -23,6 +23,26 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.1.1.RELEASE</version>
 		</dependency>
+		<!--aop  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.1.1.RELEASE</version>
+		</dependency>
+		<!--aop依赖  -->
+		<!-- aopalliance -->
+		<dependency>
+		    <groupId>aopalliance</groupId>
+		    <artifactId>aopalliance</artifactId>
+		    <version>1.0</version>
+		</dependency>
+		<!-- spring-aspects -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aspects</artifactId>
+		    <version>5.1.2.RELEASE</version>
+		</dependency>
 		
 		
 

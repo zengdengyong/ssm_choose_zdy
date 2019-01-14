@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.zdy.dao.ChooseCourseMapper">
+	<!--注意:type后面跟的是全限定名,如果不是,可以在config.xml中配置  -->
+	<resultMap type="ChooseCourseVo" id="base_result">
+	
+		<id column="s_id" property="sId"/>
+		<result column="s_name" property="sName"/>
+		<result column="s_email" property="sEmail"/>
+		<result column="s_age" property="sAge"/>
+		<result column="s_remark" property="sRemark"/>
+		<result column="c_name" property="cName"/>
+		<result column="c_score" property="cScore"/>
+		<result column="t_name" property="tName"/>
+	</resultMap>
+	
+	<!-- 通过学生名字查询对应的学生选课信息 -->
+	<select id="queryStudentCourseAndTeatherByName" resultMap="base_result">
+		SELECT s.s_id,s.s_name,s.s_email,s.s_age,c.c_name,c.c_score,t.t_name,s.s_remark
+		FROM student s
+		LEFT JOIN student_course s_c ON s.s_id = s_c.s_id
+		LEFT JOIN course c  ON c.c_id = s_c.c_id
+		LEFT JOIN teacher_course t_c ON c.c_id = t_c.c_id
+		LEFT JOIN teacher t ON t.t_id = t_c.t_id 
+		<where>
+			<if test="sName!=null and sName!='' ">
+				s.s_name = #{sName}
+			</if>
+		</where>
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

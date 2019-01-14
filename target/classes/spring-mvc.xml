@@ -16,9 +16,10 @@
 		f.消息转换器工厂 
 		g.拦截器 -->
 	<!-- 配置包扫描 -->
-	<context:component-scan base-package="com.zdy" use-default-filters="false">
+	<!-- <context:component-scan base-package="com.zdy" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-	</context:component-scan>
+	</context:component-scan> -->
+	<context:component-scan base-package="com.zdy.controller"></context:component-scan>
 
 	<!--三大组件  -->
 	<mvc:annotation-driven></mvc:annotation-driven>
@@ -52,18 +53,14 @@
 		<!-- 如果没有指定, 则表示当前拦截器对项目中所有的handler方法都生效 -->
 		<!-- <bean class="com.zdy.interceptor.AuthInterceptor"> </bean> -->
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="/auth/**"/>
 			<mvc:exclude-mapping path="/auth/login"/>
+			<!-- <mvc:exclude-mapping path="/logins/**"/> ======= 放行静态资源-->
 			<bean class="com.zdy.interceptor.AuthInterceptor"></bean>
 		</mvc:interceptor>
-		<!-- <mvc:interceptor>
-			<mvc:mapping path="/**"/>	
-			<mvc:exclude-mapping path="/auth/**"/>	
-			<mvc:exclude-mapping path="/resources/**"/>	
-			<bean class="com.cdsxt.interceptor.HelloInterceptor"> </bean>
-		</mvc:interceptor>
 		
-		-->
+		
+		
 	</mvc:interceptors>
 
 </beans>

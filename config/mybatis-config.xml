@@ -15,6 +15,7 @@
 		<!-- 单独为某个类取别名 -->
 		<!-- <typeAlias alias="User" type="com.cdsxt.pojo.User"/> -->
 		<package name="com.zdy.model" />
+		<package name="com.zdy.vo" />
 	</typeAliases>
 	
 	<!--分页所需要的东西  -->
