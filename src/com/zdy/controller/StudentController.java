@@ -1,8 +1,10 @@
 package com.zdy.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.zdy.model.Student;
 import com.zdy.service.StudentService;
+import com.zdy.util.FileUploadUtil;
 import com.zdy.util.SendMailUtil2;
 import com.zdy.util.VerificationUtil;
 import com.zdy.util.SendMailUtil;
@@ -142,6 +146,26 @@ public class StudentController {
 			return "login";
 		}
 	}
+	//文件上传
+	@PostMapping("/uploadFile")
+	public String testUploadUtil(MultipartFile uploadFile,HttpServletRequest request) throws IOException{
+		String folder = "zdy";
+		String successPage = request.getParameter("pageName");
+		System.out.println(successPage);
+		request.setAttribute("msg", "文件上传成功");
+		return FileUploadUtil.upload(uploadFile, request, folder, successPage);
+		
+	}
+	
+	
+	
+	
+	
+	
+	//修改个人资料
+	
+	
+	
 	
 	
 	//查询所有的学生信息

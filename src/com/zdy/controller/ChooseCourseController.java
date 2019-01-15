@@ -25,6 +25,7 @@ public class ChooseCourseController {
 	@PostMapping("/queryStudentCourseAndTeatherByName")
 	public List<ChooseCourseVo> queryStudentCourseAndTeatherByName(@RequestParam("sName")String sName){
 		List<ChooseCourseVo> stuChooseMessages = chooseCourseService.queryStudentCourseAndTeatherByName(sName);
+		
 		return stuChooseMessages;
 		
 	}

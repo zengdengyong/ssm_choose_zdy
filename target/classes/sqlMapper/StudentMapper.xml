@@ -3,6 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
+	
 <mapper namespace="com.zdy.dao.StudentMapper">
 	<!--注意:type后面跟的是全限定名,如果不是,可以在config.xml中配置  -->
 	<resultMap type="Student" id="base_result">
@@ -11,8 +12,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="s_password" property="sPassword"/>
 		<result column="s_email" property="sEmail"/>
 		<result column="s_age" property="sAge"/>
-		<result column="s_remark" property="eRemark"/>
+		<result column="s_photo_url" property="sPhotoUrl"/>
+		<result column="s_url" property="sUrl"/>
+		<result column="s_remark" property="sRemark"/>
 	</resultMap>
+	
+	
 	<!--查询对应的用户名和密码  -->
 	<!-- select user_name,user_password from sys_user WHERE user_name = 'zzz' and user_password = '123';
 	 -->

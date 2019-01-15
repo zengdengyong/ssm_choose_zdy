@@ -20,10 +20,24 @@
 			</div>
 			<div class="col-md-10">
 				<div class="panel panel-default">
-
-
+					
 					<!-- Table -->
 					<div id="content">
+					
+					<!--文件上传  -->
+						<form action="${pageContext.request.contextPath }/auth/uploadFile"
+							method="post" enctype="multipart/form-data">
+							<input type="file" name="uploadFile">
+							<input type="hidden" name="pageName" value="index">
+							<button>提交</button>
+
+						</form>
+						<!-- 提示用户信息 -->
+						<div class="error_tips" id="return_message"
+							style="visibility: visible;">
+							<span style="color: red">${msg }&nbsp;</span>
+						</div>
+
 						<jsp:include page="/WEB-INF/views/common/welcome.jsp"></jsp:include>
 
 					</div>
@@ -40,6 +54,14 @@
 
 
 <script>
+
+/*提示信息3秒消失!  */
+function codefans() {
+	var box = document.getElementById("return_message");
+	box.style.visibility = "hidden";
+}
+setTimeout("codefans()", 3000);//2秒，可以改动
+
 
 $(function(){
 	//操作菜单

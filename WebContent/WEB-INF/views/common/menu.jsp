@@ -27,6 +27,8 @@
 </body>
 <script>
 
+
+
 $(function(){
 	//操作菜单
 	$("#menuDiv li.menu-a").on("click", function(event){
