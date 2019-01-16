@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zdy.common.ResultBean;
 import com.zdy.service.ChooseCourseService;
 import com.zdy.vo.ChooseCourseVo;
 
@@ -23,10 +24,10 @@ public class ChooseCourseController {
 	
 	//通过学生名字查询对应的选课信息
 	@PostMapping("/queryStudentCourseAndTeatherByName")
-	public List<ChooseCourseVo> queryStudentCourseAndTeatherByName(@RequestParam("sName")String sName){
-		List<ChooseCourseVo> stuChooseMessages = chooseCourseService.queryStudentCourseAndTeatherByName(sName);
-		
-		return stuChooseMessages;
+	public ResultBean queryStudentCourseAndTeatherByName(@RequestParam("sName")String stuName){
+		List<ChooseCourseVo> stuChooseMessages = chooseCourseService.queryStudentCourseAndTeatherByName(stuName);
+		ResultBean success = ResultBean.success(stuChooseMessages);
+		return success;
 		
 	}
 	@GetMapping("/test")

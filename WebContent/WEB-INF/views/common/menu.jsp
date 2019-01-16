@@ -15,7 +15,7 @@
 		<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
 	      <li role="presentation"  class="active"><a href="${pageContext.request.contextPath }/auth/goIndex">Home</a></li>
 	     
-	      <li role="presentation"  class="menu-a" request-url="${pageContext.request.contextPath }/dept/deptManage" id="deptManage"><a href="#">部门管理</a></li>
+	      <li role="presentation"  class="menu-a" request-url="${pageContext.request.contextPath }/auth/queryStudents"><a href="#">查询所有的学生</a></li>
 	      <li role="presentation"  class="menu-a" request-url="${pageContext.request.contextPath }/user/userManage"><a href="#">员工管理</a></li>
 	      <li role="presentation"  class="menu-a" request-url="${pageContext.request.contextPath }/role/roleManage"><a href="#">角色管理</a></li>
 	      <li role="presentation"  class="menu-a" request-url="${pageContext.request.contextPath }/resource/resourceManage"> <a href="#"">权限管理</a></li>

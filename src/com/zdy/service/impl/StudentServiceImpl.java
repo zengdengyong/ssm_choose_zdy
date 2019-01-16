@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.zdy.common.Constants;
 import com.zdy.dao.StudentMapper;
 import com.zdy.model.Student;
 import com.zdy.service.StudentService;
@@ -17,36 +20,40 @@ public class StudentServiceImpl implements StudentService{
 	
 	@Resource
 	private StudentMapper studentMapper;
-	//查询所有的学生
+	
+	//查询所有的学生,并且用分页
 	@Override
-	public List<Student> queryStudents() {
-		
+	public PageInfo<Student> queryStudents(Integer page) {
+		//限制每页的信息
+		PageHelper.startPage(page, Constants.PAGE_SIZE);
+		//查询所有的学生
 		List<Student> students = studentMapper.queryStudents();
-		return students;
+		return new PageInfo<Student>(students);
 		
 	}
+	
 	
 	//通过用户名或者邮箱查出对应的student
 	@Override
 	public Student queryStudentBySnameOrEamilOrpassword(
-			String sNameOrMail,
-			String sPassword) {
-		String sName = null;
-		String sEmail =null;
-		if(sNameOrMail.contains("@")){
-			sEmail=sNameOrMail;
+			String stuNameOrMail,
+			String stuPassword) {
+		String stuName = null;
+		String stuEmail =null;
+		if(stuNameOrMail.contains("@")){
+			stuEmail=stuNameOrMail;
 		}else{
-			sName=sNameOrMail;
+			stuName=stuNameOrMail;
 		}
-		Student student = studentMapper.queryStudentNameOrPassword(sName, sEmail, sPassword);
+		Student student = studentMapper.queryStudentNameOrPassword(stuName, stuEmail, stuPassword);
 		return student;
 	}
 	
 	//查询对应名字密码下的用户是否存在
 	@Override
-	public boolean isStudent(String sNameOrMail, String sPassword, HttpSession session) {
+	public boolean isStudent(String stuNameOrMail, String stuPassword, HttpSession session) {
 		//调用上面面的方法===名字或者通过邮箱密码查询对应用户
-		Student student = queryStudentBySnameOrEamilOrpassword(sNameOrMail, sPassword);
+		Student student = queryStudentBySnameOrEamilOrpassword(stuNameOrMail, stuPassword);
 		if(student!=null){
 			session.setAttribute("student", student);
 			return true;
@@ -58,8 +65,8 @@ public class StudentServiceImpl implements StudentService{
 	
 	//传入对应的邮箱查询对应的学生是否存在
 	@Override
-	public boolean isStudent(String sNameOrMail) {
-		Student student = queryStudentBySnameOrEamilOrpassword(sNameOrMail, null);
+	public boolean isStudent(String stuNameOrMail) {
+		Student student = queryStudentBySnameOrEamilOrpassword(stuNameOrMail, null);
 		boolean flag = false;
 		if(student!=null){
 			flag = true;
@@ -71,8 +78,8 @@ public class StudentServiceImpl implements StudentService{
 	 */
 	@Override
 	@Transactional
-	public void updatePassword(String sEmail, String sPassword) {
-		studentMapper.updatePassword(sEmail, sPassword);
+	public void updatePassword(String stuEmail, String stuPassword) {
+		studentMapper.updatePassword(stuEmail, stuPassword);
 	}
 	
 	

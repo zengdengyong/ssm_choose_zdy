@@ -15,9 +15,9 @@ public class ChooseCourseServiceImpl implements ChooseCourseService {
 	private ChooseCourseMapper chooseCourseMapper;
 	
 	@Override
-	public List<ChooseCourseVo> queryStudentCourseAndTeatherByName(String sName) {
+	public List<ChooseCourseVo> queryStudentCourseAndTeatherByName(String stuName) {
 		// TODO Auto-generated method stub
-		List<ChooseCourseVo> queryStudentCourseAndTeatherByName = chooseCourseMapper.queryStudentCourseAndTeatherByName(sName);
+		List<ChooseCourseVo> queryStudentCourseAndTeatherByName = chooseCourseMapper.queryStudentCourseAndTeatherByName(stuName);
 		return queryStudentCourseAndTeatherByName;
 	}
 

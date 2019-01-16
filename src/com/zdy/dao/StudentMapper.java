@@ -11,11 +11,11 @@ public interface StudentMapper {
 	List<Student> queryStudents();
 	//查询用户名，邮箱，密码
 	Student queryStudentNameOrPassword(
-			@Param("sName")String sName,
-			@Param("sEmail")String sEmail,
-			@Param("sPassword")String sPassword);
+			@Param("stuName")String stuName,
+			@Param("stuEmail")String stuEmail,
+			@Param("stuPassword")String stuPassword);
 	
 	//修改密码
-	void updatePassword(@Param("sEmail")String sEmail,@Param("sPassword")String sPassword);
+	void updatePassword(@Param("stuEmail")String stuEmail,@Param("stuPassword")String stuPassword);
 	
 }

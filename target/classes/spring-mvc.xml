@@ -66,6 +66,7 @@
 			<mvc:exclude-mapping path="/auth/getVerification"/>
 			<mvc:exclude-mapping path="/auth/validateMail"/>
 			<mvc:exclude-mapping path="/auth/alterPassword"/>
+			<mvc:exclude-mapping path="/auth/queryStudents"/>
 			<!-- ======= 放行图片的静态资源 -->
 			<!-- <mvc:exclude-mapping path="/logins/**"/>  -->
 			<bean class="com.zdy.interceptor.AuthInterceptor"></bean>

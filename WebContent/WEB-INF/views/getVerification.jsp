@@ -29,7 +29,7 @@
 				<span style="color: red">${message }&nbsp;</span>
 			</div>
 			
-		<input name="sEmail" type="text" class="form-control" placeholder="请输入qq邮箱获取验证码" required autofocus />
+		<input name="stuEmail" type="text" class="form-control" placeholder="请输入qq邮箱获取验证码" required autofocus />
 		<button class="btn btn-lg btn-warning btn-block" type="submit">确定</button>
 		
 	</form>

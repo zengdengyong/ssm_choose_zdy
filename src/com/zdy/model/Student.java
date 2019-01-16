@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Student {
-	private Integer sId;
-	private String sName;
-	private String sPassword;
-	private String sEmail;
-	private Integer sAge;
-	private String sPhotoUrl;
-	private String sUrl;
-	private String sRemark;
+	private Integer stuId;
+	private String stuName;
+	private String stuPassword;
+	private String stuEmail;
+	private Integer stuAge;
+	private String stuPhotoUrl;
+	private String stuUrl;
+	private String stuRemark;
 }

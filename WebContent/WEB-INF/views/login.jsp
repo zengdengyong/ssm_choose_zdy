@@ -30,10 +30,10 @@
 		
 		
 			<div>
-				<input type="text" placeholder="账号或者关联相关邮箱账号" required="true"  name="sNameOrEmail" />
+				<input type="text" placeholder="账号或者关联相关邮箱账号" required="true"  name="stuNameOrEmail" />
 			</div>
 			<div>
-				<input type="password" placeholder="密码" required="true" name="sPassword" />
+				<input type="password" placeholder="密码" required="true" name="stuPassword" />
 			</div>
 			<div class="">
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>

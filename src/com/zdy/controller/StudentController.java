@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.pagehelper.PageInfo;
+import com.zdy.common.ResultBean;
 import com.zdy.model.Student;
 import com.zdy.service.StudentService;
 import com.zdy.util.FileUploadUtil;
@@ -23,6 +25,14 @@ import com.zdy.util.SendMailUtil2;
 import com.zdy.util.VerificationUtil;
 import com.zdy.util.SendMailUtil;
 
+//private Integer stuId;
+//private String stuName;
+//private String stuPassword;
+//private String stuEmail;
+//private Integer stuAge;
+//private String stuPhotoUrl;
+//private String stuUrl;
+//private String stuRemark;
 @Controller
 @RequestMapping("/auth")
 public class StudentController {
@@ -37,15 +47,15 @@ public class StudentController {
 	//检查登录...
 	@PostMapping(value="/login")
 	public String reLogin(
-			@RequestParam("sNameOrEmail")String sNameOrEmail,
-			@RequestParam("sPassword")String sPassword,
+			@RequestParam("stuNameOrEmail")String stuNameOrEmail,
+			@RequestParam("stuPassword")String stuPassword,
 			HttpSession session,
 			Model model){
-		if(studentService.isStudent(sNameOrEmail,sPassword,session)){
+		if(studentService.isStudent(stuNameOrEmail,stuPassword,session)){
 			//通过用户名和密码查出student信息
 			
 			//把用户名或者邮箱存入作用域
-			session.setAttribute("sNameOrEmail", sNameOrEmail);
+			session.setAttribute("stuNameOrEmail", stuNameOrEmail);
 			return "index";
 		}else{
 			model.addAttribute("message", "用户名或者密码错误!");
@@ -76,12 +86,12 @@ public class StudentController {
 	//获取验证码
 //	@RequestMapping(value="/getVerification",method=RequestMethod.POST)
 	@PostMapping("/getVerification")
-	public String getVerification(@RequestParam("sEmail")String sEmail,HttpSession session,Model model){
+	public String getVerification(@RequestParam("stuEmail")String stuEmail,HttpSession session,Model model){
 		//首先应该判断是否有该邮箱号
-		boolean isStudent = studentService.isStudent(sEmail);
+		boolean isStudent = studentService.isStudent(stuEmail);
 		if(isStudent){
 			//保存输入的邮箱到session
-			session.setAttribute("sEmail", sEmail);
+			session.setAttribute("sEmail", stuEmail);
 			/**
 			 * 发送验证码到邮箱
 			 */
@@ -93,7 +103,7 @@ public class StudentController {
 			session.setAttribute("verificationCode", verification);
 			String content="您获取的验证码是:"+verification;
 			//发送验证码到邮箱
-			SendMailUtil2.sendMessage(fromMailName, password, sEmail, subject, content, "163");
+			SendMailUtil2.sendMessage(fromMailName, password, stuEmail, subject, content, "163");
 //			SendMailUtil.sendMessage(fromMailName, password, sEmail, subject, content);
 			return "validateMail";
 		}else{
@@ -167,14 +177,13 @@ public class StudentController {
 	
 	
 	
-	
-	//查询所有的学生信息
+	//查询所有的学生信息并返回
 	@RequestMapping("/queryStudents")
-	@ResponseBody
-	public List<Student> queryStudents(){
-		List<Student> students = studentService.queryStudents();
+	public String queryStudents(@RequestParam(value="page",defaultValue="1")Integer page,Model model){
+		PageInfo<Student> pageInfo = studentService.queryStudents(page);
 		
-		return students;
+		model.addAttribute("pageInfo", pageInfo);
+		return "student/studentHtml";
 	}
 
 }

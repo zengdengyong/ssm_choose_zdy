@@ -4,11 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.github.pagehelper.PageInfo;
 import com.zdy.model.Student;
 
 public interface StudentService {
 	//查询所有的学生
-	List<Student> queryStudents();
+	PageInfo<Student> queryStudents(Integer page);
 	
 	//查询对应名字密码下的用户是否存在......可以省略abstract
 	public abstract boolean isStudent(String sNameOrMail, String sPassword, HttpSession session);
