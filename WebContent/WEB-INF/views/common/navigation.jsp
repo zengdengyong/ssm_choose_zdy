@@ -50,7 +50,7 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li><a href="#"><span class="glyphicon glyphicon-user"
-							aria-hidden="true"></span>&nbsp;欢迎:&nbsp;${sNameOrEmail }&nbsp;进入选课系统</a></li>
+							aria-hidden="true"></span>&nbsp;欢迎:&nbsp;${stuNameOrEmail }&nbsp;进入选课系统</a></li>
 
 					<li style="color: green">
 						<a href="${pageContext.request.contextPath}/auth/logout"><button

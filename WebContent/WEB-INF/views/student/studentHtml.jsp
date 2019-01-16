@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<jsp:include page="/WEB-INF/views/common/assets.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/views/common/navigation.jsp"></jsp:include>
-	
+
 	<div>
 	<!--搜索框  -->
 	<div class="panel-heading">
@@ -82,5 +73,45 @@
 	<jsp:include page="/WEB-INF/views/common/tabs.jsp"></jsp:include>
 </div>
 
-</body>
-</html>
+
+<script>
+
+//全选  全不选功能
+	$("#ckAll").on("click",function(){
+		var inputs =$("#tbodystudentInfo input[type='checkbox']");
+		if($(this).prop("checked")){
+	        $.each(inputs,function(index,element){
+	            $(element).prop("checked",true);
+	        })
+	    }else{
+	        $.each(inputs,function(index,element){
+	            $(element).prop("checked",false);
+	        })
+	    }
+	})
+	
+		//分页功能
+		$("li[pageNum]").on("click", function(event){
+			//阻止浏览器默认行为
+			event.preventDefault();
+			//阻止事件冒泡
+			event.stopPropagation();	
+			var requestURL = "${pageContext.request.contextPath }/auth/queryStudents";
+			var pageNum = $(this).attr("pageNum");
+			var param = {
+				"page": pageNum
+			};
+			$.ajax({
+				url: requestURL,
+				type : "POST",
+				data: param,
+				success: function(result){
+					$("#content").html(result);
+				} 
+			})
+		})
+	
+	
+
+	
+</script>

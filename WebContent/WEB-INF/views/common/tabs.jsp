@@ -6,7 +6,6 @@
 <div class="panel-footer" id="tabs" >
 	<nav aria-label="Page navigation">
 		<ul class="pagination">
-
 			<!-- 上一页, 需要判断是否显示 -->
 			<c:if test="${ pageInfo.hasPreviousPage}">
 				<li pageNum="${pageInfo.prePage}"><a
@@ -29,7 +28,7 @@
 			<c:if test="${pageInfo.hasNextPage }">
 				<li pageNum="${pageInfo.nextPage}"><a
 					href="#"
-					aria-label="Next">下一页 <!-- <span aria-hidden="true">&raquo;</span> -->
+					aria-label="Next">下一页<!--  <span aria-hidden="true">&raquo;</span> -->
 				</a></li>
 			</c:if>
 		</ul>

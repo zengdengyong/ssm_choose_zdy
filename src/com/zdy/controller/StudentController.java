@@ -25,14 +25,6 @@ import com.zdy.util.SendMailUtil2;
 import com.zdy.util.VerificationUtil;
 import com.zdy.util.SendMailUtil;
 
-//private Integer stuId;
-//private String stuName;
-//private String stuPassword;
-//private String stuEmail;
-//private Integer stuAge;
-//private String stuPhotoUrl;
-//private String stuUrl;
-//private String stuRemark;
 @Controller
 @RequestMapping("/auth")
 public class StudentController {
@@ -81,7 +73,7 @@ public class StudentController {
 //	@RequestMapping(value="/getVerification",method=RequestMethod.GET)
 	@GetMapping("/getVerification")
 	public String getVerification(){
-		return "getVerification";
+		return "auth/getVerification";
 	}
 	//获取验证码
 //	@RequestMapping(value="/getVerification",method=RequestMethod.POST)
@@ -91,7 +83,7 @@ public class StudentController {
 		boolean isStudent = studentService.isStudent(stuEmail);
 		if(isStudent){
 			//保存输入的邮箱到session
-			session.setAttribute("sEmail", stuEmail);
+			session.setAttribute("stuEmail", stuEmail);
 			/**
 			 * 发送验证码到邮箱
 			 */
@@ -105,10 +97,10 @@ public class StudentController {
 			//发送验证码到邮箱
 			SendMailUtil2.sendMessage(fromMailName, password, stuEmail, subject, content, "163");
 //			SendMailUtil.sendMessage(fromMailName, password, sEmail, subject, content);
-			return "validateMail";
+			return "auth/validateMail";
 		}else{
 			model.addAttribute("message", "没有该邮箱!");
-			return "getVerification";
+			return "auth/getVerification";
 		}
 		
 	}
@@ -123,13 +115,13 @@ public class StudentController {
 		if("".equals(verification)){
 			//如果用户输入的为空
 			model.addAttribute("message", "验证码不能为空");
-			return "validateMail";
+			return "auth/validateMail";
 		}else{
 			if(verificationCode.equals(verification)){
-				return "alterPassword";
+				return "auth/alterPassword";
 			}else{
 				model.addAttribute("message", "验证码不对!");
-				return "validateMail";
+				return "auth/validateMail";
 			}
 		}
 	}
@@ -146,11 +138,11 @@ public class StudentController {
 								Model model){
 		if(!password1.equals(password2)){
 			model.addAttribute("message", "两次输入的密码不对应");
-			return "alterPassword";
+			return "auth/alterPassword";
 		}else{
 			//修改密码
-			String sEmail = (String) session.getAttribute("sEmail");
-			studentService.updatePassword(sEmail, password1);
+			String stuEmail = (String) session.getAttribute("stuEmail");
+			studentService.updatePassword(stuEmail, password1);
 			//重新登录
 			model.addAttribute("message", "密码修改成功,请重新登录!");
 			return "login";
